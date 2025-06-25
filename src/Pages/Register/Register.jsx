@@ -40,7 +40,35 @@ const Register = () => {
             <h1 className="text-5xl font-bold">Register now!</h1>
             <form onSubmit={handleRegister}>
               <fieldset className="fieldset">
+                <label className="label">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  className="input"
+                  placeholder="Enter your Name"
+                />
                 <label className="label">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  className="input"
+                  placeholder="Email"
+                />
+                <label className="label">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  className="input"
+                  placeholder="Password"
+                />
+                
+                <label className="label">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  className="input"
+                  placeholder="Password"
+                />
                 <input
                   type="email"
                   name="email"

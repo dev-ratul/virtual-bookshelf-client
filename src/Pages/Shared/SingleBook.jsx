@@ -1,11 +1,9 @@
 import React, { use, useState } from "react";
-import axios from "axios";
-import { motion } from "framer-motion";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
 
 const SingleBook = ({ singleBook }) => {
 
-  const { user } = use(AuthContext);
+  // const { user } = use(AuthContext);
   const {
     book_title,
     cover_photo,
@@ -13,37 +11,13 @@ const SingleBook = ({ singleBook }) => {
     total_page,
     book_category,
     reading_status,
-    user_email,
     _id,
     book_overview,
     upvote,
   } = singleBook;
 
   //   handleUpvote
-  const [localVote, setLocalVote] = useState(upvote);
-  const handleUpvote = async () => {
-    if (!user) {
-      return console.log("Please login to upvote!");
-    }
 
-    if (user.email === user_email) {
-      return console.log("You can't upvote your own book!");
-    }
-
-    try {
-      const res = await axios.patch(`http://localhost:3000/addBook/${_id}`);
-
-      if (res.data.modifiedCount > 0) {
-        console.log("Thanks for upvoting!");
-        setLocalVote((prev) => prev + 1);
-      } else {
-        console.log("Upvote failed");
-      }
-    } catch (err) {
-      console.log("Error:", err);
-      console.log("Upvote error");
-    }
-  };
 
   return (
     <motion.div
@@ -52,7 +26,7 @@ const SingleBook = ({ singleBook }) => {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       //   transition={{ duration: 0.5 }}
-      className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl hover:shadow-indigo-300 transition-all duration-300 flex flex-col"
+      className="bg-white lg:h-[400px] dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl hover:shadow-indigo-300 transition-all duration-300 flex flex-col"
     >
       {/* Image */}
       <div className="h-60 w-full overflow-hidden relative">
@@ -76,9 +50,7 @@ const SingleBook = ({ singleBook }) => {
             ✍️ {book_author} | 📄 {total_page} pages
           </p>
 
-          <p className="text-sm text-gray-700 dark:text-gray-300 mt-2">
-            {book_overview.slice(0, 90)}...
-          </p>
+          
         </div>
 
         {/* Bottom Section */}
@@ -86,17 +58,12 @@ const SingleBook = ({ singleBook }) => {
           <span className="text-xs px-3 py-1 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-700 dark:text-white font-medium">
             {reading_status}
           </span>
-          {/* <button
-            onClick={handleUpvote}
-            className="btn text-orange-500 font-bold text-sm "
-          >
-            ⬆ {upvote}
-          </button> */}
+          
           <button
-            onClick={handleUpvote}
+            
             className="btn h-5 text-orange-500 font-bold text-sm "
           >
-            ⬆ {localVote}
+            ⬆ {upvote}
           </button>
         </div>
       </div>
