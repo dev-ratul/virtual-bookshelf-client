@@ -1,17 +1,29 @@
 import React, { use } from "react";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
+import { useNavigate } from "react-router";
 
 const SocialLogin = () => {
-    const {googleLogin}= use(AuthContext)
+  const { googleLogin } = use(AuthContext);
+  const navigate = useNavigate();
 
-    const handleGoogleLogin=()=>{
-        googleLogin()
-            .then()
-    }
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        console.log(result.user); // Firebase user object
+        navigate("/"); // navigate works here
+      })
+      .catch((error) => {
+        console.error("Google Login Failed:", error);
+      });
+  };
+
   return (
     <div>
       <div className="divider">OR</div>
-      <button onClick={handleGoogleLogin} className="btn bg-white text-black border-[#e5e5e5] w-full">
+      <button
+        onClick={handleGoogleLogin}
+        className="btn bg-white text-black border-[#e5e5e5] w-full"
+      >
         <svg
           aria-label="Google logo"
           width="16"

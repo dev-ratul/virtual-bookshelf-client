@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
 import { useContext, useState } from "react";
 import { Disclosure } from "@headlessui/react";
@@ -7,41 +7,70 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 const Navber = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
+  const navigate= useNavigate()
 
-  console.log(user)
+  console.log(user);
 
   const handleLogout = () => {
     logOut()
-      .then(() => console.log("SignOut complete"))
+      .then(() => {
+        console.log("SignOut complete")
+        navigate('/signIn')
+      })
       .catch((error) => console.log("error", error));
   };
 
   const links = (
     <>
       <li>
-        <NavLink to="/" className={({ isActive }) => `book-link ${isActive ? "active-link" : ""}`}>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `book-link ${isActive ? "active-link" : ""}`
+          }
+        >
           Home
         </NavLink>
       </li>
       <li>
-        <NavLink to="/book-shelf" className={({ isActive }) => `book-link ${isActive ? "active-link" : ""}`}>
+        <NavLink
+          to="/book-shelf"
+          className={({ isActive }) =>
+            `book-link ${isActive ? "active-link" : ""}`
+          }
+        >
           Bookshelf
         </NavLink>
       </li>
       {user && (
         <>
           <li>
-            <NavLink to="/add-book" className={({ isActive }) => `book-link ${isActive ? "active-link" : ""}`}>
+            <NavLink
+              to="/add-book"
+              className={({ isActive }) =>
+                `book-link ${isActive ? "active-link" : ""}`
+              }
+            >
               Add Book
             </NavLink>
           </li>
           <li>
-            <NavLink to="/my-book" className={({ isActive }) => `book-link ${isActive ? "active-link" : ""}`}>
+            <NavLink
+              to="/my-book"
+              className={({ isActive }) =>
+                `book-link ${isActive ? "active-link" : ""}`
+              }
+            >
               My Books
             </NavLink>
           </li>
           <li>
-            <NavLink to="/profile" className={({ isActive }) => `book-link ${isActive ? "active-link" : ""}`}>
+            <NavLink
+              to="/profile"
+              className={({ isActive }) =>
+                `book-link ${isActive ? "active-link" : ""}`
+              }
+            >
               Profile
             </NavLink>
           </li>
@@ -51,7 +80,10 @@ const Navber = () => {
   );
 
   return (
-    <Disclosure as="nav" className="bg-[#EAEFEF] shadow-md sticky top-0 z-50 border-b border-[#EAE4D5]">
+    <Disclosure
+      as="nav"
+      className="bg-[#EAEFEF] shadow-md sticky top-0 z-50 border-b border-[#EAE4D5]"
+    >
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -63,7 +95,10 @@ const Navber = () => {
                   className="w-10 h-10"
                   alt="book-logo"
                 />
-                <NavLink to="/" className="text-3xl font-bold text-[#4b3f2f] tracking-wide">
+                <NavLink
+                  to="/"
+                  className="text-3xl font-bold text-[#4b3f2f] tracking-wide"
+                >
                   BookWorm
                 </NavLink>
               </div>

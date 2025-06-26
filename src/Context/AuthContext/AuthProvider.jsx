@@ -15,25 +15,31 @@ const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading]= useState(true)
 
   const signUp = (email, password) => {
+    setLoading(true)
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const login = (email, password) => {
+    setLoading(true)
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const logOut = () => {
+    setLoading(true)
     return signOut(auth);
   };
 
   const googleLogin = () => {
+    setLoading(true)
     return signInWithPopup(auth, googleProvider);
   };
 
   // ✅ Add this function
   const updateUserProfile = (name, photoURL) => {
+    setLoading(true)
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photoURL,
@@ -43,6 +49,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoading(false)
     });
     return () => {
       unSubscribe();
@@ -55,8 +62,9 @@ const AuthProvider = ({ children }) => {
     login,
     user,
     setUser,
+    loading,
     logOut,
-    updateUserProfile, // ✅ include here
+    updateUserProfile, 
   };
 
   return (
