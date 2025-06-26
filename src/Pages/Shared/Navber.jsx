@@ -1,21 +1,17 @@
 import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const Navber = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [isOpen, setIsOpen] = useState(false);
-  const navigate= useNavigate()
-
-  console.log(user);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logOut()
       .then(() => {
-        console.log("SignOut complete")
-        navigate('/signIn')
+        navigate("/signIn");
       })
       .catch((error) => console.log("error", error));
   };
@@ -99,7 +95,7 @@ const Navber = () => {
                   to="/"
                   className="text-3xl font-bold text-[#4b3f2f] tracking-wide"
                 >
-                  BookWorm
+                  Virtual Bookshelf
                 </NavLink>
               </div>
 
@@ -122,7 +118,7 @@ const Navber = () => {
                       Register
                     </NavLink>
                     <NavLink
-                      to="/SignIn"
+                      to="/signIn"
                       className="bg-[#6f4e37] text-white px-4 py-2 rounded-full hover:bg-[#5a3d2d]"
                     >
                       Sign In
@@ -163,7 +159,7 @@ const Navber = () => {
                   Register
                 </NavLink>
                 <NavLink
-                  to="/SignIn"
+                  to="/signIn"
                   className="w-full bg-[#6f4e37] text-white px-4 py-2 rounded-full hover:bg-[#5a3d2d]"
                 >
                   Sign In
