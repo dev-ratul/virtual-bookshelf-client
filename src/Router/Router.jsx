@@ -10,11 +10,13 @@ import MyBook from "../Pages/Shared/MyBook";
 import EditBook from "../Pages/Shared/EditBook";
 import Profile from "../Pages/Shared/Profile";
 import PrivateRoute from "../Provider/PrivateRoute";
+import Error404 from "../Pages/Shared/Error404";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    errorElement: <Error404></Error404>,
     children: [
       {
         index: true,
@@ -36,7 +38,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "book-shelf",
-        element: <PrivateRoute><BookShelf></BookShelf></PrivateRoute>,
+        element: <BookShelf></BookShelf>,
         loader: () => {
           return fetch("http://localhost:3000/addBook");
         },
@@ -62,4 +64,8 @@ export const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path: '*',
+    element: <Error404></Error404>
+  }
 ]);
