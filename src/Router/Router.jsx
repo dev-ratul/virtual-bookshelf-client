@@ -7,6 +7,8 @@ import AddBook from "../Pages/Shared/AddBook";
 import BookShelf from "../Pages/Shared/BookShelf";
 import BookDetails from "../Pages/Shared/BookDetails";
 import MyBook from "../Pages/Shared/MyBook";
+import EditBook from "../Pages/Shared/EditBook";
+import Profile from "../Pages/Shared/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +18,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+        loader: ()=> fetch(`http://localhost:3000/popularBook`)
       },
       {
         path: "/register",
@@ -46,6 +49,15 @@ export const router = createBrowserRouter([
       {
         path: '/my-book',
         Component: MyBook
+      },
+      {
+        path: '/my-book/:id',
+        element: <EditBook></EditBook>,
+        loader: ({params})=> fetch(`http://localhost:3000/editBook/${params.id}`)
+      },
+      {
+        path: '/profile',
+        element: <Profile></Profile>
       }
     ],
   },

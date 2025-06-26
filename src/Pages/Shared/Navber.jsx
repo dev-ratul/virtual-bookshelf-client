@@ -8,6 +8,8 @@ const Navber = () => {
   const { user, logOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
 
+  console.log(user)
+
   const handleLogout = () => {
     logOut()
       .then(() => console.log("SignOut complete"))

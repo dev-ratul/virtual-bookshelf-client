@@ -3,32 +3,30 @@ import Lottie from "lottie-react";
 import loginLotte from "../../assets/login.json";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
 import SocialLogin from "../Shared/SocialLogin";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const Login = () => {
-  const {login}= use(AuthContext)
-  const navigate= useNavigate()
+  const { login } = use(AuthContext);
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
-    
+
     const form = e.target;
     const email = form.email.value;
-    const password= form.password.value;
+    const password = form.password.value;
     console.log(email, password);
-    
 
     // login
     login(email, password)
-        .then(result=>{
-            console.log(result.user)
-            form.reset()
-            navigate('/')
-            
-        })
-        .then(error=>{
-            console.log(error)
-        })
+      .then((result) => {
+        console.log(result.user);
+        form.reset();
+        navigate("/");
+      })
+      .then((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -66,6 +64,16 @@ const Login = () => {
                   <a className="link link-hover">Forgot password?</a>
                 </div>
                 <button className="btn btn-neutral mt-4">Login</button>
+                {/* Redirect to Login */}
+                <p className="mt-4 text-center text-sm text-gray-500">
+                  Already have an account?{" "}
+                  <Link
+                    to="/register"
+                    className="text-indigo-600 font-semibold hover:underline"
+                  >
+                    Register
+                  </Link>
+                </p>
               </fieldset>
             </form>
             <SocialLogin></SocialLogin>
