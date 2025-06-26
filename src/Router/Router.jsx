@@ -9,6 +9,7 @@ import BookDetails from "../Pages/Shared/BookDetails";
 import MyBook from "../Pages/Shared/MyBook";
 import EditBook from "../Pages/Shared/EditBook";
 import Profile from "../Pages/Shared/Profile";
+import PrivateRoute from "../Provider/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -31,33 +32,33 @@ export const router = createBrowserRouter([
       },
       {
         path: "/add-book",
-        Component: AddBook,
+        element:<PrivateRoute><AddBook></AddBook></PrivateRoute>
       },
       {
         path: "book-shelf",
-        Component: BookShelf,
+        element: <PrivateRoute><BookShelf></BookShelf></PrivateRoute>,
         loader: () => {
           return fetch("http://localhost:3000/addBook");
         },
       },
       {
         path: "/book-shelf/:id",
-        element: <BookDetails></BookDetails>,
+        element: <PrivateRoute><BookDetails></BookDetails></PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:3000/addBook/${params.id}`)
 
       },
       {
         path: '/my-book',
-        Component: MyBook
+        element:<PrivateRoute><MyBook></MyBook></PrivateRoute>
       },
       {
         path: '/my-book/:id',
-        element: <EditBook></EditBook>,
+        element: <PrivateRoute><EditBook></EditBook></PrivateRoute>,
         loader: ({params})=> fetch(`http://localhost:3000/editBook/${params.id}`)
       },
       {
         path: '/profile',
-        element: <Profile></Profile>
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>
       }
     ],
   },
