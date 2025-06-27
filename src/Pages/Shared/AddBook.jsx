@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
+ import Swal from 'sweetalert2'; // উপরে import করা আছে ধরে নিচ্ছি
+
 
 const AddBook = () => {
   const { user } = useContext(AuthContext);
 
- const handleFormSubmit = (e) => {
+
+const handleFormSubmit = (e) => {
   e.preventDefault();
   const form = e.target;
 
@@ -21,19 +24,46 @@ const AddBook = () => {
     upvote: 0,
   };
 
-  fetch(`http://localhost:3000/addBook`,{
+  fetch(`http://localhost:3000/addBook`, {
     method: 'POST',
-    headers:{
-        'content-type': 'application/json'
+    headers: {
+      'content-type': 'application/json'
     },
     body: JSON.stringify(book)
   })
-    .then(res=> res.json())
-    .then(data=> { 
-        console.log(data)
+    .then(res => res.json())
+    .then(data => {
+      if (data.insertedId || data._id) {
+        Swal.fire({
+          title: '✅ Book Added!',
+          text: 'Your book has been added successfully.',
+          icon: 'success',
+          confirmButtonColor: '#6366F1',
+          confirmButtonText: 'Cool!',
+        });
+        form.reset();
+      } else {
+        Swal.fire({
+          title: '❌ Failed!',
+          text: 'Something went wrong while adding the book.',
+          icon: 'error',
+          confirmButtonColor: '#EF4444',
+          confirmButtonText: 'Try Again',
+        });
+      }
     })
-    form.reset()
-}
+    .catch((error) => {
+      console.error("Error adding book:", error);
+      Swal.fire({
+        title: '⚠️ Error!',
+        text: 'There was a problem connecting to the server.',
+        icon: 'error',
+        confirmButtonColor: '#EF4444',
+        confirmButtonText: 'Okay',
+      });
+    });
+};
+
   
 
   return (
