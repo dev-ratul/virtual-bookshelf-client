@@ -4,6 +4,7 @@ import loginLotte from "../../assets/login.json";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
 import SocialLogin from "../Shared/SocialLogin";
 import { Link, useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { login } = use(AuthContext);
@@ -19,14 +20,31 @@ const Login = () => {
 
     // login
     login(email, password)
-      .then((result) => {
-        console.log(result.user);
-        form.reset();
-        navigate("/");
-      })
-      .then((error) => {
-        console.log(error);
-      });
+  .then((result) => {
+    console.log(result.user);
+    form.reset();
+
+    Swal.fire({
+      title: "Login Successful!",
+      text: "Welcome back 😊",
+      icon: "success",
+      confirmButtonColor: "#6366f1",
+      confirmButtonText: "Okay",
+    });
+
+    navigate("/");
+  })
+  .catch((error) => {
+    console.error(error);
+
+    Swal.fire({
+      title: "Login Failed!",
+      text: error.message,
+      icon: "error",
+      confirmButtonColor: "#d33",
+      confirmButtonText: "Try Again",
+    });
+  });
   };
 
   return (
