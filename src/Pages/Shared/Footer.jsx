@@ -5,10 +5,10 @@ const Footer = () => {
     <footer className="bg-gray-900 text-gray-300 py-10 px-6 md:px-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
 
-        {/* Logo & Website Name */}
+        
         <div className="flex flex-col items-start space-y-3">
           <div className="flex items-center gap-3">
-            {/* Example Logo SVG */}
+            
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-10 w-10 text-indigo-500"
@@ -30,7 +30,7 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Contact Details */}
+        
         <div>
           <h3 className="text-white font-semibold text-lg mb-4">Contact Us</h3>
           <ul className="space-y-2 text-gray-400">
@@ -40,7 +40,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Terms & Policies */}
+      
         <div>
           <h3 className="text-white font-semibold text-lg mb-4">Legal</h3>
           <ul className="space-y-2">
@@ -71,7 +71,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Social Media Links */}
+        {/* Social Media Link */}
         <div>
           <h3 className="text-white font-semibold text-lg mb-4">Follow Us</h3>
           <div className="flex space-x-5">
@@ -82,7 +82,7 @@ const Footer = () => {
               aria-label="Twitter"
               className="text-gray-400 hover:text-indigo-500 transition-colors"
             >
-              {/* Twitter Icon */}
+              
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -101,7 +101,7 @@ const Footer = () => {
               aria-label="Facebook"
               className="text-gray-400 hover:text-indigo-500 transition-colors"
             >
-              {/* Facebook Icon */}
+            
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -120,7 +120,7 @@ const Footer = () => {
               aria-label="LinkedIn"
               className="text-gray-400 hover:text-indigo-500 transition-colors"
             >
-              {/* LinkedIn Icon */}
+             
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -135,7 +135,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Copyright */}
+      
       <div className="mt-10 border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
         © {new Date().getFullYear()} Virtual Bookshelf. All rights reserved.
       </div>
