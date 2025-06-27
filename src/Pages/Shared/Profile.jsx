@@ -34,7 +34,6 @@ const Profile = () => {
     <div className="min-h-screen bg-white py-12 px-4">
       <div className="max-w-6xl mx-auto bg-white  rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-3">
         
-        {/* Left: Profile Info */}
         <div className="bg-gradient-to-tr from-purple-0 to-indigo-100 text-white p-8 flex flex-col items-center justify-center space-y-4">
           <img
             src={user?.photoURL || "https://via.placeholder.com/150"}
