@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router"; 
 import toast from "react-hot-toast";
+  import Swal from "sweetalert2";
 
 const Books = ({ Book, handleEdit, onDelete }) => {
   const {
@@ -17,52 +18,59 @@ const Books = ({ Book, handleEdit, onDelete }) => {
 
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const handleDelete = (id) => {
-    toast.custom((t) => (
-      <div className="bg-white dark:bg-gray-800 p-4 rounded shadow-md border max-w-sm mx-auto">
-        <p className="text-gray-800 dark:text-white mb-3 font-semibold">
-          Are you sure you want to delete this book?
-        </p>
-        <div className="flex justify-end gap-2">
-          <button
-            onClick={() => toast.dismiss(t.id)}
-            className="px-3 py-1 rounded bg-gray-300 hover:bg-gray-400 text-black"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={() => {
-              toast.dismiss(t.id);
-              setIsDeleting(true);
-              fetch(`https://virtual-bookshelf-server-zeta.vercel.app/delete/${id}`, {
-                method: "DELETE",
-              })
-                .then((res) => res.json())
-                .then((data) => {
-                  if (data.deletedCount > 0) {
-                    setTimeout(() => {
-                      onDelete(id); // UI remove
-                      toast.success("✅ Book deleted successfully!");
-                    }, 400);
-                  } else {
-                    toast.error("❌ Book not found!");
-                    setIsDeleting(false);
-                  }
-                })
-                .catch((err) => {
-                  console.error("Delete error:", err);
-                  setIsDeleting(false);
-                  toast.error("Something went wrong!");
-                });
-            }}
-            className="px-3 py-1 rounded bg-red-500 hover:bg-red-600 text-white"
-          >
-            Delete
-          </button>
-        </div>
-      </div>
-    ));
-  };
+
+
+const handleDelete = (id) => {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "Do you really want to delete this book?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, delete it!",
+    cancelButtonText: "Cancel",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      setIsDeleting(true);
+      fetch(`https://virtual-bookshelf-server-zeta.vercel.app/delete/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            setTimeout(() => {
+              onDelete(id); // UI থেকে remove
+              Swal.fire({
+                icon: "success",
+                title: "Deleted!",
+                text: "Book deleted successfully!",
+                timer: 1500,
+                showConfirmButton: false,
+              });
+            }, 400);
+          } else {
+            setIsDeleting(false);
+            Swal.fire({
+              icon: "error",
+              title: "Not Found!",
+              text: "Book not found!",
+            });
+          }
+        })
+        .catch((err) => {
+          console.error("Delete error:", err);
+          setIsDeleting(false);
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Something went wrong!",
+          });
+        });
+    }
+  });
+};
+
 
   return (
     <div
@@ -107,7 +115,7 @@ const Books = ({ Book, handleEdit, onDelete }) => {
             </Link>
             <button
               onClick={() => handleDelete(_id)}
-              className="px-4 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition"
+              className="px-4 py-1 bg-red-500 cursor-pointer text-white rounded hover:bg-red-600 transition"
             >
               Delete
             </button>

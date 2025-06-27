@@ -226,7 +226,7 @@ const handleFormSubmit = (e) => {
         <div className="md:col-span-2 flex justify-center">
           <button
             type="submit"
-            className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-md transition"
+            className="bg-indigo-600 cursor-pointer hover:bg-indigo-700 text-white px-8 py-3 rounded-full font-semibold text-lg shadow-md transition"
           >
             ➕ Add Book
           </button>
