@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router';
+import Swal from "sweetalert2";
 
 const EditBook = () => {
   const data = useLoaderData();
@@ -21,20 +22,31 @@ const EditBook = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const res = await fetch(`https://virtual-bookshelf-server-zeta.vercel.app/updateBook/${data._id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    });
+  e.preventDefault();
+  const res = await fetch(`https://virtual-bookshelf-server-zeta.vercel.app/updateBook/${data._id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData)
+  });
 
-    if (res.ok) {
-      alert("✅ Book updated successfully!");
-      navigate('/my-books');
-    } else {
-      alert("❌ Failed to update the book.");
-    }
-  };
+  if (res.ok) {
+    Swal.fire({
+      icon: "success",
+      title: "Success!",
+      text: "✅ Book updated successfully!",
+      confirmButtonColor: "#3085d6"
+    }).then(() => {
+      navigate('/my-book');
+    });
+  } else {
+    Swal.fire({
+      icon: "error",
+      title: "Oops!",
+      text: "❌ Failed to update the book.",
+      confirmButtonColor: "#d33"
+    });
+  }
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-tr from-[#fefce8] via-[#f0fdf4] to-[#e0f2fe] dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-14 px-6">
