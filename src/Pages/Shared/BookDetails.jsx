@@ -111,7 +111,7 @@ const BookDetails = () => {
 
           <p className="text-gray-700 dark:text-gray-400 mt-4">{book_overview}</p>
 
-          {/* Upvote Button and count */}
+          {/* Upvote Button */}
           <div className="mt-6 flex items-center gap-4">
             <button
               onClick={async () => {
