@@ -9,8 +9,8 @@ const SocialLogin = () => {
   const handleGoogleLogin = () => {
     googleLogin()
       .then((result) => {
-        console.log(result.user); // Firebase user object
-        navigate("/"); // navigate works here
+        console.log(result.user); 
+        navigate("/"); 
       })
       .catch((error) => {
         console.error("Google Login Failed:", error);

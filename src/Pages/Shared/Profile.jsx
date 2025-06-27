@@ -51,7 +51,7 @@ const Profile = () => {
           </div>
         </div>
 
-        {/* Right: Stats & Chart */}
+       
         <div className="col-span-2 p-10 space-y-8">
           <div>
             <h3 className="text-xl font-semibold text-gray-700 mb-4">📚 Bookshelf Summary</h3>

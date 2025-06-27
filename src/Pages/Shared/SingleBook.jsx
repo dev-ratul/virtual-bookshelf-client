@@ -24,10 +24,10 @@ const SingleBook = ({ singleBook }) => {
   return (
     <motion.div
       whileHover={{ scale: 1.12 }}
-      //   whileTap={{ scale: 0.98 }}
+      
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
-      //   transition={{ duration: 0.5 }}
+     
       className="bg-white lg:h-[400px] dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl hover:shadow-indigo-300 transition-all duration-300 flex flex-col"
     >
       {/* Image */}
@@ -42,7 +42,7 @@ const SingleBook = ({ singleBook }) => {
         </span>
       </div>
 
-      {/* Content */}
+     
       <div className="flex flex-col justify-between flex-grow p-5 space-y-3">
         <div>
           <h3 className="text-xl font-bold text-gray-800 dark:text-white">
@@ -55,7 +55,7 @@ const SingleBook = ({ singleBook }) => {
           
         </div>
 
-        {/* Bottom Section */}
+        {/* Bottom  */}
         <div className="flex items-center justify-between pt-3 ">
           <span className="text-xs px-3 py-1 rounded-full bg-blue-100 text-blue-600 dark:bg-blue-700 dark:text-white font-medium">
             {reading_status}
