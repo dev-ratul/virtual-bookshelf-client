@@ -22,7 +22,7 @@ const EditBook = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(`http://localhost:3000/updateBook/${data._id}`, {
+    const res = await fetch(`https://virtual-bookshelf-server-zeta.vercel.app/updateBook/${data._id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)

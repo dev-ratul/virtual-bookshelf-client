@@ -5,7 +5,7 @@ const ReaderStats = () => {
   const [stats, setStats] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/stats")
+    fetch("https://virtual-bookshelf-server-zeta.vercel.app/api/stats")
       .then((res) => res.json())
       .then((data) => setStats(data));
   }, []);

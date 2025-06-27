@@ -34,7 +34,7 @@ const Books = ({ Book, handleEdit, onDelete }) => {
             onClick={() => {
               toast.dismiss(t.id);
               setIsDeleting(true);
-              fetch(`http://localhost:3000/delete/${id}`, {
+              fetch(`https://virtual-bookshelf-server-zeta.vercel.app/delete/${id}`, {
                 method: "DELETE",
               })
                 .then((res) => res.json())

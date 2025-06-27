@@ -10,7 +10,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/getuserbook?email=${user.email}`)
+      fetch(`https://virtual-bookshelf-server-zeta.vercel.app/getuserbook?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setBooks(data))
         .catch((err) => {
