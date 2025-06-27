@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router"; // ✅ fix: correct import
+import { Link } from "react-router"; 
 import toast from "react-hot-toast";
 
 const Books = ({ Book, handleEdit, onDelete }) => {
@@ -41,7 +41,7 @@ const Books = ({ Book, handleEdit, onDelete }) => {
                 .then((data) => {
                   if (data.deletedCount > 0) {
                     setTimeout(() => {
-                      onDelete(id); // UI থেকে remove
+                      onDelete(id); // UI remove
                       toast.success("✅ Book deleted successfully!");
                     }, 400);
                   } else {

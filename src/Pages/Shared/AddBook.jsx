@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
- import Swal from 'sweetalert2'; // উপরে import করা আছে ধরে নিচ্ছি
+ import Swal from 'sweetalert2';
 
 
 const AddBook = () => {
@@ -194,7 +194,7 @@ const handleFormSubmit = (e) => {
           </select>
         </div>
 
-        {/* Book Overview (Textarea) */}
+        {/* Book Overview */}
         <div className="md:col-span-2">
           <label className="block font-semibold text-gray-700 mb-2">
             Book Overview
@@ -208,7 +208,7 @@ const handleFormSubmit = (e) => {
           ></textarea>
         </div>
 
-        {/* Upvote (initially 0, ReadOnly) */}
+        {/* Upvote  */}
         <div className="md:col-span-2">
           <label className="block font-semibold text-gray-700 mb-2">
             Upvotes

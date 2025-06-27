@@ -8,7 +8,7 @@ const BookDetails = () => {
   const book = useLoaderData();
   const { user } = useContext(AuthContext);
 
-  // Reading status UI state
+ 
   const [readingStatus, setReadingStatus] = useState(book.reading_status);
   const [upvotes, setUpvotes] = useState(book.upvote || 0);
   const [reviews, setReviews] = useState([]);
@@ -27,7 +27,7 @@ const BookDetails = () => {
     user_name,
   } = book;
 
-  // Update Reading Status Handler
+  
   const handleStatusUpdate = async () => {
     if (!user) {
       Swal.fire("Login Required", "Please login first to update status!", "warning");
@@ -46,7 +46,7 @@ const BookDetails = () => {
       return;
     }
 
-    // Optimistic UI update
+
     const prevStatus = readingStatus;
     setReadingStatus(nextStatus);
 
@@ -67,7 +67,7 @@ const BookDetails = () => {
     }
   };
 
-  // Fetch Reviews
+  
   useEffect(() => {
     const fetchReviews = async () => {
       try {
@@ -111,7 +111,7 @@ const BookDetails = () => {
 
           <p className="text-gray-700 dark:text-gray-400 mt-4">{book_overview}</p>
 
-          {/* Upvote Button & count */}
+          {/* Upvote Button and count */}
           <div className="mt-6 flex items-center gap-4">
             <button
               onClick={async () => {

@@ -1,4 +1,4 @@
-// ✅ src/Components/Home/FeaturedBook.jsx
+
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 

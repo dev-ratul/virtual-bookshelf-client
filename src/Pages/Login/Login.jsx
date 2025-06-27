@@ -64,7 +64,6 @@ const Login = () => {
                   <a className="link link-hover">Forgot password?</a>
                 </div>
                 <button className="btn btn-neutral mt-4">Login</button>
-                {/* Redirect to Login */}
                 <p className="mt-4 text-center text-sm text-gray-500">
                   Already have an account?{" "}
                   <Link

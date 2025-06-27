@@ -44,7 +44,7 @@ const EditBook = () => {
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-7">
-  {/* Fixed Top Labels */}
+ 
   {[
     { label: "Book Title", name: "book_title" },
     { label: "Author", name: "book_author" },
@@ -68,7 +68,7 @@ const EditBook = () => {
     </div>
   ))}
 
-  {/* Reading Status */}
+  {/* Reading  */}
   <div>
     <label htmlFor="reading_status" className="block mb-2 text-base font-semibold text-gray-700 dark:text-gray-300">
       Reading Status
@@ -104,7 +104,7 @@ const EditBook = () => {
     />
   </div>
 
-  {/* Submit Button */}
+  {/* Submit */}
   <button
     type="submit"
     className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-3 rounded-lg shadow-md transition duration-300"
