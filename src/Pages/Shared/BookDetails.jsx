@@ -134,7 +134,7 @@ const BookDetails = () => {
                   Swal.fire("Error!", "Failed to upvote. Try again!", "error");
                 }
               }}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-full shadow-md transition"
+              className="bg-indigo-600 cursor-pointer hover:bg-indigo-700 text-white px-6 py-2 rounded-full shadow-md transition"
             >
               🔼 Upvote
             </button>
@@ -204,7 +204,7 @@ const BookDetails = () => {
             <div className="flex justify-between items-center mt-2">
               <button
                 type="submit"
-                className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full transition"
+                className="bg-green-600 cursor-pointer hover:bg-green-700 text-white px-6 py-2 rounded-full transition"
               >
                 {myReview ? "Update Review" : "Submit Review"}
               </button>
@@ -238,7 +238,7 @@ const BookDetails = () => {
                       }
                     }
                   }}
-                  className="text-red-500 hover:underline"
+                  className="text-red-500 cursor-pointer hover:underline"
                 >
                   Delete Review
                 </button>
