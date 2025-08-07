@@ -24,7 +24,7 @@ const handleFormSubmit = (e) => {
     upvote: 0,
   };
 
-  fetch(`https://virtual-bookshelf-server-zeta.vercel.app/addBook`, {
+  fetch(`https://virtual-bookshelf-server-three.vercel.app/addBook`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json'

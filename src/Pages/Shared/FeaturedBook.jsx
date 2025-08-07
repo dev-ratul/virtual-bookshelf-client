@@ -6,7 +6,7 @@ const FeaturedBook = () => {
   const [book, setBook] = useState(null);
 
   useEffect(() => {
-    fetch("https://virtual-bookshelf-server-zeta.vercel.app/api/featured-book")
+    fetch("https://virtual-bookshelf-server-three.vercel.app/api/featured-book")
       .then((res) => res.json())
       .then((data) => {
         console.log("📘 Featured Book:", data);

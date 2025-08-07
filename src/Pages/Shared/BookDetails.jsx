@@ -51,7 +51,7 @@ const BookDetails = () => {
     setReadingStatus(nextStatus);
 
     try {
-      const res = await axios.patch(`https://virtual-bookshelf-server-zeta.vercel.app/books/${_id}/reading-status`, {
+      const res = await axios.patch(`https://virtual-bookshelf-server-three.vercel.app/books/${_id}/reading-status`, {
         reading_status: nextStatus,
       });
 
@@ -71,7 +71,7 @@ const BookDetails = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const res = await axios.get(`https://virtual-bookshelf-server-zeta.vercel.app/reviews/${_id}`);
+        const res = await axios.get(`https://virtual-bookshelf-server-three.vercel.app/reviews/${_id}`);
         setReviews(res.data || []);
         const mine = res.data?.find((rev) => rev?.userEmail === user?.email);
         setMyReview(mine || null);
@@ -124,7 +124,7 @@ const BookDetails = () => {
                   return;
                 }
                 try {
-                  const res = await axios.patch(`https://virtual-bookshelf-server-zeta.vercel.app/addBook/${_id}`);
+                  const res = await axios.patch(`https://virtual-bookshelf-server-three.vercel.app/addBook/${_id}`);
                   if (res.data.modifiedCount > 0) {
                     setUpvotes((prev) => prev + 1);
                     Swal.fire("Thanks!", "Your vote has been added!", "success");
@@ -171,8 +171,8 @@ const BookDetails = () => {
 
               try {
                 const url = myReview
-                  ? `https://virtual-bookshelf-server-zeta.vercel.app/reviews/${myReview._id}`
-                  : "https://virtual-bookshelf-server-zeta.vercel.app/reviews";
+                  ? `https://virtual-bookshelf-server-three.vercel.app/reviews/${myReview._id}`
+                  : "https://virtual-bookshelf-server-three.vercel.app/reviews";
                 const method = myReview ? "patch" : "post";
 
                 const res = await axios[method](url, payload);
@@ -180,7 +180,7 @@ const BookDetails = () => {
                   Swal.fire("Success", "Review saved!", "success");
                   setReviewText("");
                   setMyReview(null);
-                  const result = await axios.get(`https://virtual-bookshelf-server-zeta.vercel.app/reviews/${_id}`);
+                  const result = await axios.get(`https://virtual-bookshelf-server-three.vercel.app/reviews/${_id}`);
                   setReviews(result.data);
                   const mine = result.data.find((rev) => rev.userEmail === user?.email);
                   setMyReview(mine || null);
@@ -223,13 +223,13 @@ const BookDetails = () => {
                     if (confirm.isConfirmed) {
                       try {
                         const res = await axios.delete(
-                          `https://virtual-bookshelf-server-zeta.vercel.app/reviews/${myReview._id}`
+                          `https://virtual-bookshelf-server-three.vercel.app/reviews/${myReview._id}`
                         );
                         if (res.data.deletedCount > 0) {
                           Swal.fire("Deleted!", "Your review has been deleted.", "success");
                           setReviewText("");
                           setMyReview(null);
-                          const result = await axios.get(`https://virtual-bookshelf-server-zeta.vercel.app/reviews/${_id}`);
+                          const result = await axios.get(`https://virtual-bookshelf-server-three.vercel.app/reviews/${_id}`);
                           setReviews(result.data);
                         }
                       } catch (err) {
