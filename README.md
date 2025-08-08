@@ -1,62 +1,83 @@
 # 📚 Virtual Bookshelf
 
-Welcome to Virtual Bookshelf, a personalized platform where readers can manage their favorite books, share opinions, and explore the reading trends of others. I built this project as a passion-based learning outcome while diving deeper into React and Firebase.
+A full-stack web application that helps book lovers organize their reading journey, discover popular books, write reviews, and track reading progress — all in one place.
 
 ---
 
-##  Features
+## 🔗 Live Project Links
 
-- 🔐 User Authentication (Email/Password & Google Login)
-- 📖 Add, Edit & Delete Books
-- 👍 Upvote Books You Like
-- 💬 Leave Reviews & Ratings
-- 🔍 Filter Books by Category or Status (e.g., Reading, Completed)
-- 🌙 Light/Dark Theme Support
-- 📈 Dashboard Analytics (for personal stats)
-- ⚙️ Protected Routes (based on login status)
+### Virtual Bookshelf Project
+
+- 🚀 **Live Website:** [https://job-portal-77603.web.app/](https://job-portal-77603.web.app/)
+- 📂 **Client Repository:** [GitHub - Virtual Bookshelf Client](https://github.com/dev-ratul/virtual-bookshelf-client)
+- 🛠️ **Server Repository:** [GitHub - Virtual Bookshelf Server](https://github.com/dev-ratul/virtual-bookshelf-server)
+
 
 ---
 
-##  Tech Stack
+## 🖼️ Screenshot
 
-- **React.js** – Frontend framework
-- **Firebase Hosting** – Fast, global app hosting
-- **MongoDB & Express.js** – Backend & database (optional)
-- **Tailwind CSS** – For responsive UI design
-- **SweetAlert2** – User-friendly alerts
-- **Framer Motion** – Smooth UI animations
+![Virtual Bookshelf Homepage Screenshot](https://i.ibb.co/Hp4wHDLB/Screenshot-151.png)
+
 
 ---
 
-##  Why I Built This
+## 🧰 Technologies Used
 
-I wanted to build something beyond tutorials and lectures—a real-world app where users could track books, see popularity, and engage through reviews. I faced and solved challenges like authentication protection, dynamic filtering, and conditional rendering of UI.
+### Frontend:
+- React
+- React Router DOM
+- Tailwind CSS
+- Framer Motion
+- Axios
+- Firebase Authentication
 
----
+### Backend:
+- Node.js
+- Express.js
+- MongoDB
+- CORS
+- dotenv
+- JWT
 
-
-##  Learning Outcome
-
-- Mastered **React routing** and **state management**
-- Gained hands-on experience with **Firebase Authentication**
-- Implemented **CRUD** operations with real-time updates
-- Improved UI/UX skills with **Tailwind** and animations
-
----
-
-##  Live Website
-
-[👉 Click to Visit My Project](https://job-portal-77603.web.app)
-
----
-
-## 🤝 Acknowledgements
-
-Although this project was part of a learning journey, I put a lot of my own ideas into it to make it unique. Special thanks to the Programming Hero team for guidance and initial concept inspiration.
+### Deployment:
+- **Client**: Firebase
+- **Server**: Vercel
 
 ---
 
+## ✨ Key Features
 
-**Mahmudul Hasan Ratul**  
-Email: dev.mhratul@gmail.com  
+### 🔐 Authentication
+- Email/password login and registration
+- Google login
+- Protected/private routes using Firebase Auth
+- JWT-based route protection for secure data access
 
+### 📚 Core Features
+- Add, edit, delete, and upvote books
+- Reading status tracking: “Want to Read”, “Reading”, “Read”
+- One review per user per book (editable & deletable)
+- Book filtering & search by title, author, and reading status
+- User profile with reading summary and category-wise chart
+
+### 📊 Dashboard & Charts
+- Profile page includes a pie chart showing book categories
+- Summary of total books and reading status
+
+### 🧭 Navigation
+- Responsive navbar with conditional links based on auth state
+- Mobile hamburger menu
+- Fixed navbar + footer with links and branding
+
+### 🖌️ UI/UX Design
+- Fully responsive design for mobile, tablet, and desktop
+- Smooth page transitions using Framer Motion
+- Clean and modern design inspired by Dribbble and Figma UI kits
+
+### ⚙️ Additional
+- Loading spinners and skeletons for data fetching
+- 404 error page with animation
+- Environment variable protection for Firebase and MongoDB credentials
+
+---
